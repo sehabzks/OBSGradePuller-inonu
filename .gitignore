@@ -15,3 +15,6 @@ build/MTU OBS Not Görüntüleyici/warn-MTU OBS Not Görüntüleyici.txt
 build/MTU OBS Not Görüntüleyici/xref-MTU OBS Not Görüntüleyici.html
 dist/MTU OBS Not Görüntüleyici.exe
 MTU OBS Not Görüntüleyici.spec
+/build
+/dist
+*.spec
