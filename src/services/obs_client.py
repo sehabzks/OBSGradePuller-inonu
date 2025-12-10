@@ -8,17 +8,17 @@ from src.models import CourseGrade, ExamStats
 
 class OBSClient:
     # --- URL SABİTLERİ ---
-    BASE_URL = "https://obs.ozal.edu.tr/oibs/std/"
-    LOGIN_URL = "https://obs.ozal.edu.tr/oibs/std/login.aspx"
-    GRADES_URL = "https://obs.ozal.edu.tr/oibs/std/not_listesi_op.aspx"
-    STATS_BASE_URL = "https://obs.ozal.edu.tr" # İstatistikler genelde /oibs/acd/ altında çıkıyor
+    BASE_URL = "https://obs.inonu.edu.tr/oibs/std/"
+    LOGIN_URL = "https://obs.inonu.edu.tr/oibs/std/login.aspx"
+    GRADES_URL = "https://obs.inonu.edu.tr/oibs/std/not_listesi_op.aspx"
+    STATS_BASE_URL = "https://obs.inonu.edu.tr" # İstatistikler genelde /oibs/acd/ altında çıkıyor
 
     def __init__(self):
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Referer": self.LOGIN_URL,
-            "Origin": "https://obs.ozal.edu.tr",
+            "Origin": "https://obs.inonu.edu.tr",
             "Cache-Control": "no-cache"
         })
 
@@ -179,8 +179,8 @@ class OBSClient:
                 raw_url = url_match.group(1)
                 full_url = ""
                 if raw_url.startswith("http"): full_url = raw_url
-                elif raw_url.startswith("/"): full_url = "https://obs.ozal.edu.tr" + raw_url
-                else: full_url = "https://obs.ozal.edu.tr/oibs/std/" + raw_url.lstrip("/") # Fallback
+                elif raw_url.startswith("/"): full_url = "https://obs.inonu.edu.tr" + raw_url
+                else: full_url = "https://obs.inonu.edu.tr/oibs/std/" + raw_url.lstrip("/") # Fallback
 
                 # 3. İstatistik Sayfasını İndir
                 r_stats = self.session.get(full_url)
